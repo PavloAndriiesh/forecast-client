@@ -96,22 +96,29 @@
     },
     methods: {
       timestamp,
-      getForecast (latitude, longitude) {
-        this.$store.dispatch(SHOW_LOADER)
-        this.$store.dispatch(FORECAST_REQUEST, {
-          params: {
-            latitude,
-            longitude
-          },
-          success: (res) => {
-            this.$store.dispatch(FORECAST_SUCCESS, res)
-            this.$store.dispatch(HIDE_LOADER)
-          },
-          fail: (err) => {
-            this.$store.dispatch(FORECAST_FAIL, err)
-            this.$store.dispatch(HIDE_LOADER)
-          }
+      getForecast () {
+        this.getGeoposition(position => {
+          this.$store.dispatch(SHOW_LOADER)
+          this.$store.dispatch(FORECAST_REQUEST, {
+            params: {
+              latitude: position.coords.latitude,
+              longitude: position.coords.longitude
+            },
+            success: (res) => {
+              this.$store.dispatch(FORECAST_SUCCESS, res)
+              this.$store.dispatch(HIDE_LOADER)
+            },
+            fail: (err) => {
+              this.$store.dispatch(FORECAST_FAIL, err)
+              this.$store.dispatch(HIDE_LOADER)
+            }
+          })
         })
+      },
+      getGeoposition (callback) {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(callback)
+        }
       }
     },
     computed: {
