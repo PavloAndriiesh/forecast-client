@@ -143,7 +143,7 @@
 
   .title {
     font-family: 'Montserrat', sans-serif;
-    font-size: 47px;
+    font-size: 30px;
     font-weight: bold;
     color: #EB4A42;
     text-decoration: underline;
