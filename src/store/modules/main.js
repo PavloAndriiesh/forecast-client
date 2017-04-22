@@ -7,7 +7,8 @@ import {
 import { getForecast } from '../../utils/api'
 
 const state = {
-  forecast: {currently: {}}
+  forecast: {currently: {}},
+  place: ''
 }
 
 const actions = {
@@ -35,6 +36,9 @@ const mutations = {
   },
   [FORECAST_SUCCESS] (state, req) {
     state.forecast = req.data
+    if (req.data.latitude === -8.409518 && req.data.longitude === 115.188919) {
+      state.place = 'Bali, Malaysia'
+    }
   },
   [FORECAST_FAIL] (state, err) {
 
@@ -42,7 +46,8 @@ const mutations = {
 }
 
 const getters = {
-  forecast: state => state.forecast
+  forecast: state => state.forecast,
+  place: state => state.place
 }
 
 export default {

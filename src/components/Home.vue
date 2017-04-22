@@ -4,7 +4,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h3 class="modal-title">
-            <span class="title">Weather Forecast</span>
+            <span class="title">Weather Forecast{{ place ? ': ' + place : ''}}</span>
           </h3>
         </div>
         <div class="modal-body">
@@ -124,6 +124,9 @@
     computed: {
       forecast () {
         return this.$store.getters.forecast
+      },
+      place () {
+        return this.$store.getters.place
       }
     }
   }
