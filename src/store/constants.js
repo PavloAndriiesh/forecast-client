@@ -1,0 +1,6 @@
+export const APP_START = 'APP_START'
+export const SHOW_LOADER = 'SHOW_LOADER'
+export const HIDE_LOADER = 'HIDE_LOADER'
+export const FORECAST_REQUEST = 'FORECAST_REQUEST'
+export const FORECAST_SUCCESS = 'FORECAST_SUCCESS'
+export const FORECAST_FAIL = 'FORECAST_FAIL'
